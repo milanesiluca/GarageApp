@@ -21,7 +21,7 @@ namespace GarageApp.Vehicles
 
         public override string ToString()
         {
-            return $"Reg. Number: {RegNumber}\nColor: {Color}\n" + base.ToString();
+            return $"Reg. Number: {RegNumber}\nColor: {Color}\n" + base.ToString() + "\n";
         }
     }
 }

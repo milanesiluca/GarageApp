@@ -1,7 +1,9 @@
 ﻿using GarageApp.Vehicles;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using UtilityLibrary;
@@ -26,6 +28,20 @@ namespace GarageApp.Garages
         public bool RemoveVehiclefromParking(Buss v)
         {
             return Utility<Buss>.InsertVehicle(v, ref _bussPlaces);
+        }
+
+        public void ShowBusListInGarage()
+        {
+            int busInPark = _bussPlaces.Count(vv => vv != null);
+            Console.WriteLine($"\nCars parked in garage: {busInPark}");
+            for (int i = 0; i < busInPark; i++)
+            {
+                var car = _bussPlaces[i];
+                if (car != null)
+                {
+                    Console.WriteLine(car.ToString());
+                }
+            }
         }
     }
 }

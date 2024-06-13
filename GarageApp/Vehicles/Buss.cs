@@ -17,5 +17,10 @@ namespace GarageApp.Vehicles
             RegNumber = regNumber;
             WheelsNumer = wheels;
         }
+
+        public override string ToString()
+        {
+            return $"Reg. Number: {RegNumber}\nWheels: {WheelsNumer}\n" + base.ToString() + "\n";
+        }
     }
 }

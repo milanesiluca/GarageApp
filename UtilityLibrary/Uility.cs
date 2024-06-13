@@ -1,6 +1,6 @@
 ﻿namespace UtilityLibrary
 {
-    public class Utility<T>
+    public static class Utility<T>
     {
         public static bool InsertVehicle(T vehicle, ref T[] placeList)
         {
@@ -36,5 +36,23 @@
                 return false;
             }
         }
+
+        public static void ShowVehiclesListInGarage(ref T[] listVehicles)
+        {
+            int vehicleInPark = listVehicles.Count(vv => vv != null);
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($" * \n{typeof(T).Name} parked in garage: {vehicleInPark} * ");
+            Console.ResetColor();
+            for (int i = 0; i < vehicleInPark; i++)
+            {
+                var vehicle = listVehicles[i];
+                if (vehicle != null)
+                {
+                    Console.WriteLine(vehicle.ToString());
+                }
+            }
+        }
+
     }
 }

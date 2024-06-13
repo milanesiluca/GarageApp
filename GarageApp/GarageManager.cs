@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GarageApp.ConsoleUI;
 using GarageApp.Garages;
 using GarageApp.Vehicles;
 
@@ -13,8 +14,6 @@ namespace GarageApp
         public int CarParkPlaces { get; private set; }
         public int BussTirParkPlaces { get; private set; }
         public int MbikeParkPlaces { get; private set; }
-        
-        private bool garageBankrupt = false;
 
         private CarGarage ZioPinoGarage;
 
@@ -55,17 +54,18 @@ namespace GarageApp
                         ManageCar();
                         break;
                     case 2:
-                       
                         break;
                     case 3:
-                        garageBankrupt = true;
+                        break;
+                    case 0:
+                        Console.WriteLine("Goodbye");
                         break;
                     default:
                         Console.WriteLine("Invalid option.Please try again");
                         break;
                 }
 
-            } while(!garageBankrupt);
+            } while(operation != 0);
         
         }
 
@@ -73,11 +73,8 @@ namespace GarageApp
         {
             int operation = -1;
             do {
-                
-                Console.WriteLine("1- Register the entrance of a car");
-                Console.WriteLine("2- Register the exit of a car");
-                Console.WriteLine("3- Show the List of the cars parked in the garage");
-                Console.WriteLine("0- Exit");
+
+                Printer<Car>.PrintMenu();
                 string? chosenOperation = Console.ReadLine();
                 try
                 {

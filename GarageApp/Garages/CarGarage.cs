@@ -32,14 +32,7 @@ namespace GarageApp.Garages
         }
 
         public void ShowCarListInGarage() {
-            int carInPark = _carPlaces.Count(vv => vv != null);
-            Console.WriteLine($"\nCars parked in garage: {carInPark}");
-            for (int i = 0; i< carInPark; i++) { 
-                var car = _carPlaces[i];
-                if (car != null) { 
-                    Console.WriteLine(car.ToString());
-                }
-            }
+            Utility<Car>.ShowVehiclesListInGarage(ref _carPlaces);
         }
     }
 }

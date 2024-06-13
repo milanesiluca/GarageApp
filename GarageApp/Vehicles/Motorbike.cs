@@ -18,5 +18,10 @@ namespace GarageApp.Vehicles
             WheelsNumer = wheels;
             Color = color;
         }
+
+        public override string ToString()
+        {
+            return $"Reg. Number: {RegNumber}\nColor: {Color}\nWheels Number: {WheelsNumer}\n" + base.ToString() + "\n";
+        }
     }
 }
