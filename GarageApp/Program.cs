@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            GarageManager newGarage = new GarageManager(carParkPalces: 10, bussParkPlaces: 5, mbikeParkPlaces: 20);
+            GarageManager newGarage = new GarageManager(10);
             newGarage.OpenGarage();
         }
     }

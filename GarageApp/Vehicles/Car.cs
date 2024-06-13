@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GarageApp.Vehicles
 {
-    public class Car : Vehicles
+    public class Car : Vehicle
     {
         public string RegNumber { get; private set; }
         public int WheelsNumer {  get; private set; }
@@ -21,7 +21,7 @@ namespace GarageApp.Vehicles
 
         public override string ToString()
         {
-            return $"Reg. Number: {RegNumber}\nColor: {Color}\n" + base.ToString() + "\n";
+            return $"Vehicle Class: Car\nReg. Number: {RegNumber}\nColor: {Color}\n" + base.ToString() + "\n";
         }
     }
 }

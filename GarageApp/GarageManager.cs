@@ -11,16 +11,16 @@ namespace GarageApp
 {
     internal class GarageManager
     {
-        public int CarParkPlaces { get; private set; }
+        public int VehiclesParkPlaces { get; private set; }
 
-        private CarGarage ZioPinoGarage;
+        private VehiclesGarage ZioPinoGarage;
+        private Vehicle? newVeh;
 
+        public GarageManager(int vhParkPalces) {
 
-        public GarageManager(int carParkPalces, int bussParkPlaces, int mbikeParkPlaces) { 
-
-            CarParkPlaces = carParkPalces;
+            VehiclesParkPlaces = vhParkPalces;
             
-            ZioPinoGarage = new CarGarage(carParkPalces);
+            ZioPinoGarage = new VehiclesGarage(VehiclesParkPlaces);
             
 
         }
@@ -28,13 +28,7 @@ namespace GarageApp
         public void OpenGarage() {
             int operation = -1;
             do {
-                Console.WriteLine("Chose the operation to test\n");
-                Console.WriteLine("1- Cars");
-                Console.WriteLine("2- Bus / Truck");
-                Console.WriteLine("3- Motorbike");
-                Console.WriteLine("0- Close Garage");
-                Console.WriteLine();
-                Console.Write("Insert the chosen option: ");
+                Printer<Vehicle>.PrintMainMenu();
 
                 string? chosenOperation = Console.ReadLine();
 
@@ -48,11 +42,12 @@ namespace GarageApp
                 switch (operation)
                 {
                     case 1:
-                        ManageCar();
+                        VehicleEntranceRegistration();
                         break;
                     case 2:
                         break;
                     case 3:
+                        ZioPinoGarage.ShowCarListInGarage();
                         break;
                     case 0:
                         Console.WriteLine("Goodbye");
@@ -66,21 +61,67 @@ namespace GarageApp
         
         }
 
+        private void VehicleEntranceRegistration() {
+
+            int operation = -1;
+            Vehicle? vhEnt = null;
+            do {
+                Printer<Vehicle>.PrintCategoryMenu();
+                string? chosenOperation = Console.ReadLine();
+                try
+                {
+                    operation = int.Parse(chosenOperation!);
+                }
+                catch
+                {
+                    Console.WriteLine("Invalid input. Try again");
+                }
+
+                switch (operation)
+                {
+
+                    case 1:
+                        vhEnt = new Car("ABC123", 4, "gasoline", 5, 450, "red");
+                        break;
+                    case 2:
+                        vhEnt = new Motorbike(regNumber: "FF443", wheels: 2, fuel: "gasoline", seats: 2, lenght: 220, color: "blue");
+                        break;
+                    case 3:
+                        vhEnt = new Buss(regNumber: "kke44y", wheels: 6, fuel: "diesel", seats: 89, lenght: 790);
+                        break;
+                    case 0:
+                        vhEnt = null;
+                        break;
+                    default :
+                        Console.WriteLine("Insert an available option, please");
+                        break;
+                }
+
+                if (vhEnt is not null)
+                    Console.WriteLine(ZioPinoGarage.AddVehicleToParking(vhEnt) ? "Veichle added correctly":"En error has occoured");
+
+            } while(operation != 0);
+            
+
+        
+        }
+
         private void ManageCar()
         {
             int operation = -1;
             do {
 
-                Printer<Car>.PrintMenu();
+                
                 string? chosenOperation = Console.ReadLine();
                 try
                 {
+                    
                     operation = int.Parse(chosenOperation!);
                     switch (operation)
                     {
                         case 1:
-                            Car newCar = new Car("ABC123", 4, "benzin", 5, 450, "red");
-                            ZioPinoGarage.AddVehicleToParking(newCar);
+                            newVeh = new Car("ABC123", 4, "gasoline", 5, 450, "red");
+                            Console.WriteLine(ZioPinoGarage.AddVehicleToParking(newVeh) ? "Car added correctly" : "Operation Failed");
                             break;
                         case 2:
                             break;
