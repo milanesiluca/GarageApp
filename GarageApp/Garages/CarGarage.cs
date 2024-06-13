@@ -30,5 +30,12 @@ namespace GarageApp.Garages
         {
             return Utility<Car>.RemoveVehicle(v, ref _carPlaces);
         }
+
+        public void ShowCarListInGarage() {
+            Console.WriteLine(_carPlaces.Count(vv => vv != null));
+            foreach (Car v in _carPlaces) { 
+                v.ToString();
+            }
+        }
     }
 }

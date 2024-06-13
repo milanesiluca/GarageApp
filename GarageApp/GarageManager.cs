@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using GarageApp.Garages;
 using GarageApp.Vehicles;
-using InOutManager;
 
 namespace GarageApp
 {
@@ -72,33 +71,39 @@ namespace GarageApp
 
         private void ManageCar()
         {
-            Console.Clear();
-            Console.WriteLine("1- Register the entrance of a car");
-            Console.WriteLine("1- Register the exit of a car");
-            Console.WriteLine("0- Exit");
-            string? chosenOperation = Console.ReadLine();
             int operation = -1;
-            try
-            {
-                operation = int.Parse(chosenOperation!);
-                switch (operation)
+            do {
+                
+                Console.WriteLine("1- Register the entrance of a car");
+                Console.WriteLine("2- Register the exit of a car");
+                Console.WriteLine("3- Show the List of the cars parked in the garage");
+                Console.WriteLine("0- Exit");
+                string? chosenOperation = Console.ReadLine();
+                try
                 {
-                    case 1:
-                        Car newCar = new Car("ABC123", 4, "benzin", 5, 450, "red");
-                        ZioPinoGarage.AddVehicleToParking(newCar);
-                        break;
-                    case 2:
-                        break;
-                    case 0:
-                        break;
-                    default:
-                        break;
+                    operation = int.Parse(chosenOperation!);
+                    switch (operation)
+                    {
+                        case 1:
+                            Car newCar = new Car("ABC123", 4, "benzin", 5, 450, "red");
+                            ZioPinoGarage.AddVehicleToParking(newCar);
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            ZioPinoGarage.ShowCarListInGarage();
+                            break;
+                        case 0:
+                            break;
+                        default:
+                            break;
+                    }
                 }
-            }
-            catch
-            {
-                Console.WriteLine("Invalid input. Try again");
-            }
+                catch
+                {
+                    Console.WriteLine("Invalid input. Try again");
+                }
+            } while (operation != 0);
         }
     }
 }

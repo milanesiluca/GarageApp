@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,5 +20,10 @@ namespace GarageApp.Vehicles
             _lenght = lenght;
         }
 #pragma warning restore IDE0290
+
+        public override string ToString()
+        {
+            return $"Fuel: {_fuel}\nNumber of seats: {_numberOfSeat}\nLenght: {_lenght}";
+        }
     }
 }
