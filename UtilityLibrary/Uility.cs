@@ -7,7 +7,11 @@
             
             try
             {
-                placeList.Append(vehicle);
+                int index = placeList.Count(vv => vv != null);
+                if (index == 0) 
+                    placeList[0] = vehicle;
+                else
+                    placeList[index] = vehicle;
                 return true;
             }
             catch (Exception)
