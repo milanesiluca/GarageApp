@@ -12,8 +12,6 @@ namespace GarageApp
     internal class GarageManager
     {
         public int CarParkPlaces { get; private set; }
-        public int BussTirParkPlaces { get; private set; }
-        public int MbikeParkPlaces { get; private set; }
 
         private CarGarage ZioPinoGarage;
 
@@ -21,10 +19,9 @@ namespace GarageApp
         public GarageManager(int carParkPalces, int bussParkPlaces, int mbikeParkPlaces) { 
 
             CarParkPlaces = carParkPalces;
-            BussTirParkPlaces = bussParkPlaces;
-            MbikeParkPlaces = mbikeParkPlaces;
-            //ToDo: add other array to complete the parking place categotry
+            
             ZioPinoGarage = new CarGarage(carParkPalces);
+            
 
         }
 

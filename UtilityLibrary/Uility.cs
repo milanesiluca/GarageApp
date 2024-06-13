@@ -42,7 +42,7 @@
             int vehicleInPark = listVehicles.Count(vv => vv != null);
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($" * \n{typeof(T).Name} parked in garage: {vehicleInPark} * ");
+            Console.WriteLine($"\n * {typeof(T).Name} parked in garage: {vehicleInPark} * ");
             Console.ResetColor();
             for (int i = 0; i < vehicleInPark; i++)
             {
