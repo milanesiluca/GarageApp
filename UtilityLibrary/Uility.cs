@@ -2,6 +2,24 @@
 {
     public static class Utility<T>
     {
+        public static int ValidateInsertion(string insertion) {
+            try
+            {
+                return int.Parse(insertion);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid Input");
+            }
+            catch (NullReferenceException)
+            {
+                Console.WriteLine("Empty Input");
+            }
+            catch (Exception) {
+                Console.WriteLine("En Error has occoured");
+            }
+            return -1;
+        }
         public static bool InsertVehicle(T vehicle, ref T[] placeList)
         {
             
@@ -26,8 +44,9 @@
 
             try
             {
-                placeList = placeList.
-                            Where(vh => !vh!.Equals(vehicle)).ToArray();
+                placeList = placeList
+                            .Where(vv => vv != null)
+                            .Where(vh => !vh!.Equals(vehicle)).ToArray();
 
                 return true;
             }
@@ -36,6 +55,7 @@
                 return false;
             }
         }
+
 
         public static void ShowVehiclesListInGarage(ref T[] listVehicles)
         {

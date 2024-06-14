@@ -8,20 +8,18 @@ namespace GarageApp.Vehicles
 {
     public class Motorbike : Vehicle
     {
-        public string RegNumber { get; private set; }
         public int WheelsNumer { get; private set; }
         public string Color { get; private set; }
 
-        public Motorbike(string regNumber, int wheels, string fuel, int seats, int lenght, string color) : base(fuel, seats, lenght)
+        public Motorbike(string regNumber, int wheels, string fuel, int seats, int lenght, string color) : base(fuel, seats, lenght, regNumber)
         {
-            RegNumber = regNumber;
             WheelsNumer = wheels;
             Color = color;
         }
 
         public override string ToString()
         {
-            return $"Vehicle Class: Motorbike\nReg. Number: {RegNumber}\nColor: {Color}\nWheels Number: {WheelsNumer}\n" + base.ToString() + "\n";
+            return $"Vehicle Class: Motorbike\nColor: {Color}\n" + base.ToString() + "\n";
         }
     }
 }

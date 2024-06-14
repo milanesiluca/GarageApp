@@ -26,7 +26,7 @@ namespace GarageApp.Garages
             return Utility<Vehicle>.InsertVehicle(v, ref _vehiPlaces);
         }
 
-        public bool RemoveVehiclefromParking(Vehicle v)
+        private bool RemoveVehiclefromParking(Vehicle v)
         {
             return Utility<Vehicle>.RemoveVehicle(v, ref _vehiPlaces);
         }
@@ -34,6 +34,36 @@ namespace GarageApp.Garages
         public void ShowCarListInGarage() {
             Console.Clear();
             Utility<Vehicle>.ShowVehiclesListInGarage(ref _vehiPlaces);
+        }
+
+        private Vehicle? FilterVehicleListByRegNumber(string regNum) {
+            
+            var filteredList = _vehiPlaces
+                               .Where(vh => vh != null)
+                               .Where(vh => vh.RegNum.ToLower()!.Equals(regNum!.ToLower())).ToList();
+            return filteredList.FirstOrDefault();
+
+        }
+
+        public IEnumerable<Vehicle>? FilterVehicleListByType(Type vhType)
+        {
+
+            var filteredList = _vehiPlaces
+                               .Where(vh => vh != null)
+                               .Where(vh => vh.GetType().Equals(vhType)).ToList();
+            return filteredList!;
+
+        }
+
+        public void RemoveVehicleFromGarage(string regNum) {
+            var vehicleToRemove = FilterVehicleListByRegNumber(regNum);
+            if (vehicleToRemove == null) {
+                Console.WriteLine("Vehicle not parked in garage");
+                return;
+            }
+
+            Console.WriteLine(Utility<Vehicle>.RemoveVehicle(vehicleToRemove, ref _vehiPlaces) ? "Vehicle exit registered": "En Error has occoured");
+            
         }
     }
 }

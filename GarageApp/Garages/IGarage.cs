@@ -12,6 +12,6 @@ namespace GarageApp.Garages
         int NumberOfPlaces { get; }
 
         bool AddVehicleToParking(T v);
-        bool RemoveVehiclefromParking(T v);
+        void RemoveVehicleFromGarage(string v);
     }
 }

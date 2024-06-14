@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using GarageApp.ConsoleUI;
 using GarageApp.Garages;
 using GarageApp.Vehicles;
+using UtilityLibrary;
 
 namespace GarageApp
 {
@@ -49,9 +50,13 @@ namespace GarageApp
                         VehicleEntranceRegistration();
                         break;
                     case 2:
+                        VehicleExitRegistration();
                         break;
                     case 3:
                         ZioPinoGarage.ShowCarListInGarage();
+                        break;
+                    case 4:
+                        FilterVehiclesByType();
                         break;
                     case 0:
                         Console.WriteLine("Goodbye");
@@ -65,6 +70,68 @@ namespace GarageApp
         
         }
 
+        private void VehicleExitRegistration()
+        {
+
+            Console.Write("Insert the Vehicle's Reg. Number: ");
+            var regNummer = Console.ReadLine();
+            if (string.IsNullOrEmpty(regNummer)) { 
+                Console.WriteLine("Empty Reg. Nummer");
+                return;
+            }
+
+            ZioPinoGarage.RemoveVehicleFromGarage(regNummer);
+            
+        }
+
+        private void FilterVehiclesByType() {
+            _printer.PrintCategoryMenu();
+            int operation = -1;
+            string? chosenOperation = Console.ReadLine();
+            Type? vhType = null;
+
+            operation = Utility<Vehicle>.ValidateInsertion(chosenOperation!);
+            switch (operation)
+            {
+                case 1:
+                    vhType = typeof(Car);
+                    break;
+                case 2:
+                    vhType = typeof(Motorbike);
+                    break;
+                case 3:
+                    vhType = typeof(Buss);
+                    break;
+                case -1:
+                    vhType = null;
+                    break;
+                default:
+                    vhType = null;
+                    Console.WriteLine("En error has occured");
+                    break;
+            }
+
+            IEnumerable<Vehicle>? filteredVehiclesList = null;
+            if (vhType != null)
+            {
+                filteredVehiclesList = ZioPinoGarage.FilterVehicleListByType(vhType);
+                if (filteredVehiclesList?.Count() == 0) {
+                    Console.WriteLine($"No Vehicle of {vhType?.Name!} parked in garage\n");
+                    return;
+                }
+                foreach (var vhh in filteredVehiclesList!)
+                {
+                    Console.WriteLine(vhh.ToString());
+                }
+            }
+            else
+                Console.WriteLine($"En Error has occured");
+                
+            
+        }
+
+
+        //ToDo: temporary to get populate the array for the test
         private void VehicleEntranceRegistration() {
 
             int operation = -1;
