@@ -44,6 +44,7 @@
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"\n * {typeof(T).Name} parked in garage: {vehicleInPark} * ");
             Console.ResetColor();
+            Console.WriteLine();
             for (int i = 0; i < vehicleInPark; i++)
             {
                 var vehicle = listVehicles[i];
