@@ -119,6 +119,11 @@ namespace GarageApp
                     Console.WriteLine($"No Vehicle of {vhType?.Name!} parked in garage\n");
                     return;
                 }
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.WriteLine($" * {filteredVehiclesList?.Count()} {vhType?.Name!} parked in garage * \n");
+                Console.ResetColor();
                 foreach (var vhh in filteredVehiclesList!)
                 {
                     Console.WriteLine(vhh.ToString());
