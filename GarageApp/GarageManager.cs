@@ -88,7 +88,7 @@ namespace GarageApp
             _printer.PrintCategoryMenu();
             int operation = -1;
             string? chosenOperation = Console.ReadLine();
-            Type? vhType = null;
+            Type? vhType;
 
             operation = Utility<Vehicle>.ValidateInsertion(chosenOperation!);
             switch (operation)
