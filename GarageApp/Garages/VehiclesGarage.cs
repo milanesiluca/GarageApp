@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using UtilityLibrary;
@@ -62,30 +63,17 @@ namespace GarageApp.Garages
             Vehicle genVh = new Vehicle();
             UIInput input = new UIInput();
             bool success = input.setVehicleDetails(ref genVh, true);
-            IEnumerable<Vehicle>? vhFilteredList = null;
+            
             if (success)
             {
-
-                /*
-                 placeList = placeList
-                            .Where(vv => vv != null)
-                            .Where(vh => !vh!.Equals(vehicle)).ToArray();
-                 
-                 */
-
+                var result = EnumarebleExtension.getbackFilteredList(_vehiPlaces, genVh);
                 
-                
-
-                if (vhFilteredList != null && vhFilteredList.Count() > 0)
-                {
-                    foreach (Vehicle vh in vhFilteredList) 
-                        vh.ToString();
-                }
             }
             
         
         }
 
+             
         public void RemoveVehicleFromGarage(string regNum) {
             var vehicleToRemove = FilterVehicleListByRegNumber(regNum);
             if (vehicleToRemove == null) {

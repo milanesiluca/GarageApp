@@ -1,6 +1,7 @@
 ﻿using GarageApp.Vehicles;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -91,7 +92,8 @@ namespace GarageApp.ConsoleUI
             valid = filter;
             if (newVh is not Motorbike && filter == false)
             {
-                if (newVh is Car cVh) {
+                if (newVh is Car cVh)
+                {
                     do
                     {
                         Console.Write("Insert Number of doors: ");
@@ -117,6 +119,8 @@ namespace GarageApp.ConsoleUI
 
 
             }
+            else
+                valid = true;
 
             return valid;
         }
