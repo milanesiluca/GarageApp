@@ -13,5 +13,9 @@ namespace GarageApp.Garages
 
         bool AddVehicleToParking(T v);
         void RemoveVehicleFromGarage(string v);
+        void ShowCarListInGarage();
+        void FilterVehicleByFeature();
+        IEnumerable<Vehicle>? FilterVehicleListByType(Type vhType);
+
     }
 }

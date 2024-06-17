@@ -8,13 +8,10 @@ namespace GarageApp.Vehicles
 {
     public class Motorbike : Vehicle
     {
-        public string? Color { get; set; }
-
-  
 
         public override string ToString()
         {
-            return $"Vehicle Class: Motorbike\nColor: {Color}\n" + base.ToString() + "\n";
+            return $"Vehicle Class: Motorbike\n" + base.ToString() + "\n";
         }
     }
 }

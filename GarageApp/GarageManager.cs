@@ -20,7 +20,7 @@ namespace GarageApp
         private IPrinter<Vehicle> _printer;
         private IUIInput _uIInput;
 
-        public GarageManager(int vhParkPalces, IPrinter<Vehicle> printer, UIInput uIInput) {
+        public GarageManager(int vhParkPalces, IPrinter<Vehicle> printer, IUIInput uIInput) {
 
             VehiclesParkPlaces = vhParkPalces;
             
@@ -55,6 +55,9 @@ namespace GarageApp
                     case 4:
                         FilterVehiclesByType();
                         break;
+                    case 5:
+                        ZioPinoGarage.FilterVehicleByFeature();
+                        break;
                     case 0:
                         Console.WriteLine("Goodbye");
                         break;
@@ -66,6 +69,7 @@ namespace GarageApp
             } while(operation != 0);
         
         }
+
 
         private void VehicleExitRegistration()
         {
@@ -165,7 +169,7 @@ namespace GarageApp
 
                 bool success = false;
                 if (vhEnt != null)  
-                    success = _uIInput.setVehicleDetails(ref vhEnt);
+                    success = _uIInput.setVehicleDetails(ref vhEnt, false);
 
                 if (success)
                 {

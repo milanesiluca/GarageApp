@@ -12,7 +12,7 @@ namespace GarageApp.Vehicles
         public int Height { get; set; }
         public override string ToString()
         {
-            return $"Vehicle Class: Buss\nWheels: {WheelsNumer}\n" + base.ToString() + "\n";
+            return $"Vehicle Class: Buss\nHeight: {Height}\n" + base.ToString() + "\n";
         }
     }
 }

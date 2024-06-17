@@ -1,6 +1,8 @@
-﻿using GarageApp.Vehicles;
+﻿using GarageApp.ConsoleUI;
+using GarageApp.Vehicles;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,6 +55,35 @@ namespace GarageApp.Garages
                                .Where(vh => vh.GetType().Equals(vhType)).ToList();
             return filteredList!;
 
+        }
+
+        public void FilterVehicleByFeature() { 
+
+            Vehicle genVh = new Vehicle();
+            UIInput input = new UIInput();
+            bool success = input.setVehicleDetails(ref genVh, true);
+            IEnumerable<Vehicle>? vhFilteredList = null;
+            if (success)
+            {
+
+                /*
+                 placeList = placeList
+                            .Where(vv => vv != null)
+                            .Where(vh => !vh!.Equals(vehicle)).ToArray();
+                 
+                 */
+
+                
+                
+
+                if (vhFilteredList != null && vhFilteredList.Count() > 0)
+                {
+                    foreach (Vehicle vh in vhFilteredList) 
+                        vh.ToString();
+                }
+            }
+            
+        
         }
 
         public void RemoveVehicleFromGarage(string regNum) {

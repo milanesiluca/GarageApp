@@ -10,23 +10,28 @@ namespace GarageApp.ConsoleUI
 {
     public class UIInput : IUIInput
     {
-        public bool setVehicleDetails(ref Vehicle newVh)
+        public bool setVehicleDetails(ref Vehicle newVh, bool filter = false)
         {
 
-            bool valid = false;
+            bool valid = filter;
             do
             {
-                Console.Write("Insert Reg. Number: ");
-                string? regNum = Console.ReadLine();
-                if (!string.IsNullOrEmpty(regNum))
+                if (filter != true)
                 {
-                    newVh.RegNum = regNum.ToLower().Trim();
-                    valid = true;
+                    Console.Write("Insert Reg. Number: ");
+                    string? regNum = Console.ReadLine();
+                    if (!string.IsNullOrEmpty(regNum))
+                    {
+                        newVh.RegNum = regNum.ToLower().Trim();
+                        valid = true;
+                    }
                 }
+                else
+                    valid = true;
 
             } while (!valid);
 
-            valid = false;
+            valid = filter;
             do
             {
                 Console.Write("Insert fuel: ");
@@ -37,9 +42,9 @@ namespace GarageApp.ConsoleUI
                     valid = true;
                 }
 
-            } while (!valid);
+            } while (!valid && filter == false);
 
-            valid = false;
+            valid = filter;
             do
             {
                 Console.Write("Insert number of Wheels: ");
@@ -48,9 +53,9 @@ namespace GarageApp.ConsoleUI
                 if (valid)
                     newVh.WheelsNumer = wheelsN;
 
-            } while (!valid);
+            } while (!valid && filter == false);
 
-            valid = false;
+            valid = filter;
             do
             {
                 Console.Write("Insert number of seat: ");
@@ -59,9 +64,9 @@ namespace GarageApp.ConsoleUI
                 if (valid)
                     newVh.NumberOfSeat = seatN;
 
-            } while (!valid);
+            } while (!valid && filter == false);
 
-            valid = false;
+            valid = filter;
             do
             {
                 Console.Write("Insert length (cm): ");
@@ -69,37 +74,49 @@ namespace GarageApp.ConsoleUI
                 valid = int.TryParse(insertedLenght, out int lenght);
                 if (valid)
                     newVh.Lenght = lenght;
+            } while (!valid && filter == false);
+
+            valid = filter;
+            do
+            {
+                Console.Write("Insert vehicle color: ");
+                string? color = Console.ReadLine();
+                if (!string.IsNullOrEmpty(color))
+                {
+                    newVh.Color = color;
+                    valid = true;
+                }
             } while (!valid);
 
-            valid = false;
-            if (newVh is not Buss)
+            valid = filter;
+            if (newVh is not Motorbike && filter == false)
             {
-                do
-                {
-                    Console.Write("Insert vehicle color: ");
-                    string? color = Console.ReadLine();
-                    if (!string.IsNullOrEmpty(color))
+                if (newVh is Car cVh) {
+                    do
                     {
-                        if (newVh is Car cVh)
-                            cVh.Color = color;
-                        else if (newVh is Motorbike mVh)
-                            mVh.Color = color;
-                        valid = true;
-                    }
-                } while (!valid);
-            }
-            else if (newVh is Buss bVh)
-            {
-                do
-                {
-                    Console.Write("Insert the height of the vehicle (cm): ");
-                    string? insertedHeight = Console.ReadLine();
-                    valid = int.TryParse(insertedHeight, out int height);
-                    if (valid)
-                        bVh.Height = height;
-                } while (!valid);
-            }
+                        Console.Write("Insert Number of doors: ");
+                        string? doors = Console.ReadLine();
+                        valid = int.TryParse(doors, out int doorsNum);
+                        if (valid)
+                            cVh.Doors = doorsNum;
 
+                    } while (!valid && filter == false);
+
+                }
+                else if (newVh is Buss bVh && filter == false)
+                {
+                    do
+                    {
+                        Console.Write("Insert the height of the vehicle (cm): ");
+                        string? insertedHeight = Console.ReadLine();
+                        valid = int.TryParse(insertedHeight, out int height);
+                        if (valid)
+                            bVh.Height = height;
+                    } while (!valid && filter == false);
+                }
+
+
+            }
 
             return valid;
         }

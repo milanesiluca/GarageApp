@@ -25,6 +25,7 @@ namespace GarageApp.ConsoleUI
             Console.WriteLine("2- Register the exit of a veichle");
             Console.WriteLine("3- Show the List of the vehicles parked in the garage");
             Console.WriteLine("4- Filter parked vehicles by vehicle type");
+            Console.WriteLine("5- Filter parked vehicles by technical features");
             Console.WriteLine("0- Exit");
             Console.Write("\nInsert your option: ");
         }
