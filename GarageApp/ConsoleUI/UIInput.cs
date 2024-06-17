@@ -1,6 +1,7 @@
 ﻿using GarageApp.Vehicles;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -70,39 +71,25 @@ namespace GarageApp.ConsoleUI
                     newVh.Lenght = lenght;
             } while (!valid);
 
-            if (newVh is Car carVh)
+            valid = false;
+            if (newVh is not Buss)
             {
-                valid = false;
                 do
                 {
                     Console.Write("Insert vehicle color: ");
                     string? color = Console.ReadLine();
                     if (!string.IsNullOrEmpty(color))
                     {
-                        carVh.Color = color;
+                        if (newVh is Car cVh)
+                            cVh.Color = color;
+                        else if (newVh is Motorbike mVh)
+                            mVh.Color = color;
                         valid = true;
                     }
                 } while (!valid);
             }
-
-            else if (newVh is Motorbike mVh)
-            {
-                valid = false;
-                do
-                {
-                    Console.Write("Insert vehicle color: ");
-                    string? color = Console.ReadLine();
-                    if (!string.IsNullOrEmpty(color))
-                    {
-                        mVh.Color = color;
-                        valid = true;
-                    }
-                } while (!valid);
-            }
-
             else if (newVh is Buss bVh)
             {
-                valid = false;
                 do
                 {
                     Console.Write("Insert the height of the vehicle (cm): ");

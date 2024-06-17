@@ -99,7 +99,9 @@ namespace GarageApp
                 case 3:
                     vhType = typeof(Buss);
                     break;
+                case 0:
                 case -1:
+                    Console.Clear();
                     vhType = null;
                     break;
                 default:
@@ -125,8 +127,7 @@ namespace GarageApp
                     Console.WriteLine(vhh.ToString());
                 }
             }
-            else
-                Console.WriteLine($"En Error has occured");
+            
                 
             
         }
@@ -154,6 +155,7 @@ namespace GarageApp
                         vhEnt = new Buss();
                         break;
                     case 0:
+                        Console.Clear();
                         vhEnt = null;
                         break;
                     default :
@@ -166,7 +168,15 @@ namespace GarageApp
                     success = _uIInput.setVehicleDetails(ref vhEnt);
 
                 if (success)
-                    Console.WriteLine(ZioPinoGarage.AddVehicleToParking(vhEnt!) ? "Veichle added correctly\n":"En error has occoured\n");
+                {
+                    Console.BackgroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+                    Console.WriteLine(ZioPinoGarage.AddVehicleToParking(vhEnt!) ? " * Veichle added correctly * \n" : " * En error has occoured * \n");
+                    Console.ResetColor();
+                }
+                    
+
+                    
 
             } while(operation != 0);
 
