@@ -10,24 +10,31 @@ namespace GarageApp.Vehicles
 
     public abstract class Vehicle
     {
-        private string _fuel;
-        private int _numberOfSeat;
+        public string? Fuel { get; set; }
+        public int NumberOfSeat { get; set; }
+        public int Lenght { get; set; }
+        public string? RegNum { get; set; }
+
+        public int WheelsNumer { get; set; }
+
+        private int _numberOfSeats;
         private int _lenght;
-        public string RegNum { get; private set; }
 
 #pragma warning disable IDE0290
-        public Vehicle(string fuel, int seats, int lenght, string regNum)
-        {
-            _fuel = fuel;
-            _numberOfSeat = seats;
-            _lenght = lenght;
-            RegNum = regNum;
-        }
+        //public Vehicle(string fuel, int seats, int lenght, string regNum)
+        //{
+        //    Fuel = fuel;
+        //    NumberOfSeat = seats;
+        //    Lenght = lenght;
+        //    RegNum = regNum;
+
+        //}
+
 #pragma warning restore IDE0290
 
         public override string ToString()
         {
-            return $"Fuel: {_fuel}\nNumber of seats: {_numberOfSeat}\nLenght: {_lenght}\nReg. Number: {RegNum}\n";
+            return $"Fuel: {Fuel}\nNumber of seats: {NumberOfSeat}\nLenght: {Lenght}\nReg. Number: {RegNum}\nNumber Of Wheels: {WheelsNumer}\n";
         }
     }
 }

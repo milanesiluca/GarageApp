@@ -9,13 +9,7 @@ namespace GarageApp.Vehicles
 {
     public class Buss : Vehicle
     {
-        public int WheelsNumer { get; private set; }
-
-        public Buss(string regNumber, int wheels, string fuel, int seats, int lenght) : base(fuel, seats, lenght, regNumber)
-        {
-            WheelsNumer = wheels;
-        }
-
+        public int Height { get; set; }
         public override string ToString()
         {
             return $"Vehicle Class: Buss\nWheels: {WheelsNumer}\n" + base.ToString() + "\n";

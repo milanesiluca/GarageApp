@@ -8,14 +8,9 @@ namespace GarageApp.Vehicles
 {
     public class Motorbike : Vehicle
     {
-        public int WheelsNumer { get; private set; }
-        public string Color { get; private set; }
+        public string? Color { get; set; }
 
-        public Motorbike(string regNumber, int wheels, string fuel, int seats, int lenght, string color) : base(fuel, seats, lenght, regNumber)
-        {
-            WheelsNumer = wheels;
-            Color = color;
-        }
+  
 
         public override string ToString()
         {

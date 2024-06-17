@@ -15,17 +15,19 @@ namespace GarageApp
         public int VehiclesParkPlaces { get; private set; }
 
         private VehiclesGarage ZioPinoGarage;
-        private Vehicle? newVeh;
+        //private Vehicle? newVeh;
 
         private IPrinter<Vehicle> _printer;
+        private IUIInput _uIInput;
 
-        public GarageManager(int vhParkPalces, IPrinter<Vehicle> printer) {
+        public GarageManager(int vhParkPalces, IPrinter<Vehicle> printer, UIInput uIInput) {
 
             VehiclesParkPlaces = vhParkPalces;
             
             ZioPinoGarage = new VehiclesGarage(VehiclesParkPlaces);
 
             _printer = printer;
+            _uIInput = uIInput;
             
 
         }
@@ -37,12 +39,7 @@ namespace GarageApp
 
                 string? chosenOperation = Console.ReadLine();
 
-                try { 
-                    operation = int.Parse(chosenOperation!);
-                
-                } catch {
-                    Console.WriteLine("Invalid input. Try again");
-                }
+                operation = Utility<Vehicle>.ValidateInsertion(chosenOperation!);
 
                 switch (operation)
                 {
@@ -62,7 +59,7 @@ namespace GarageApp
                         Console.WriteLine("Goodbye");
                         break;
                     default:
-                        Console.WriteLine("Invalid option.Please try again");
+                        Console.WriteLine("Option Not Available\n");
                         break;
                 }
 
@@ -107,7 +104,6 @@ namespace GarageApp
                     break;
                 default:
                     vhType = null;
-                    Console.WriteLine("En error has occured");
                     break;
             }
 
@@ -136,7 +132,6 @@ namespace GarageApp
         }
 
 
-        //ToDo: temporary to get populate the array for the test
         private void VehicleEntranceRegistration() {
 
             int operation = -1;
@@ -144,26 +139,19 @@ namespace GarageApp
             do {
                 _printer.PrintCategoryMenu();
                 string? chosenOperation = Console.ReadLine();
-                try
-                {
-                    operation = int.Parse(chosenOperation!);
-                }
-                catch
-                {
-                    Console.WriteLine("Invalid input. Try again");
-                }
+                operation = Utility<Vehicle>.ValidateInsertion(chosenOperation!);
 
                 switch (operation)
                 {
 
                     case 1:
-                        vhEnt = new Car("ABC123", 4, "gasoline", 5, 450, "red");
+                        vhEnt = new Car();
                         break;
                     case 2:
-                        vhEnt = new Motorbike(regNumber: "FF443", wheels: 2, fuel: "gasoline", seats: 2, lenght: 220, color: "blue");
+                        vhEnt = new Motorbike();
                         break;
                     case 3:
-                        vhEnt = new Buss(regNumber: "kke44y", wheels: 6, fuel: "diesel", seats: 89, lenght: 790);
+                        vhEnt = new Buss();
                         break;
                     case 0:
                         vhEnt = null;
@@ -173,13 +161,15 @@ namespace GarageApp
                         break;
                 }
 
-                if (vhEnt is not null)
-                    Console.WriteLine(ZioPinoGarage.AddVehicleToParking(vhEnt) ? "Veichle added correctly\n":"En error has occoured\n");
+                bool success = false;
+                if (vhEnt != null)  
+                    success = _uIInput.setVehicleDetails(ref vhEnt);
+
+                if (success)
+                    Console.WriteLine(ZioPinoGarage.AddVehicleToParking(vhEnt!) ? "Veichle added correctly\n":"En error has occoured\n");
 
             } while(operation != 0);
-            
 
-        
         }
 
         

@@ -40,7 +40,7 @@ namespace GarageApp.Garages
             
             var filteredList = _vehiPlaces
                                .Where(vh => vh != null)
-                               .Where(vh => vh.RegNum.ToLower()!.Equals(regNum!.ToLower())).ToList();
+                               .Where(vh => vh.RegNum!.ToLower()!.Equals(regNum!.ToLower())).ToList();
             return filteredList.FirstOrDefault();
 
         }

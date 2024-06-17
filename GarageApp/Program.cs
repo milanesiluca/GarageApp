@@ -9,7 +9,8 @@ namespace GarageApp
         static void Main(string[] args)
         {
             IPrinter<Vehicle> menuPrinter = new Printer<Vehicle>();
-            GarageManager newGarage = new GarageManager(10, printer: menuPrinter);
+            UIInput input = new UIInput();
+            GarageManager newGarage = new GarageManager(10, printer: menuPrinter, input);
             newGarage.OpenGarage();
         }
     }

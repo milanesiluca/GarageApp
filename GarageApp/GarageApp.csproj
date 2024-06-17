@@ -8,11 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\UtilityLibrary\UtilityLibrary.csproj" />
+    <Compile Remove="Vehicles\TypesObject\**" />
+    <EmbeddedResource Remove="Vehicles\TypesObject\**" />
+    <None Remove="Vehicles\TypesObject\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Vehicles\TypesObject\" />
+    <ProjectReference Include="..\UtilityLibrary\UtilityLibrary.csproj" />
   </ItemGroup>
 
 </Project>
