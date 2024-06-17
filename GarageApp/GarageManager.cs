@@ -179,9 +179,6 @@ namespace GarageApp
                     Console.ResetColor();
                     Console.WriteLine();
                 }
-                    
-
-                    
 
             } while(operation != 0);
 
