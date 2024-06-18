@@ -171,7 +171,7 @@ namespace GarageApp
                 }
 
                 bool success = false;
-                if (vhEnt != null)  
+                if (vhEnt != null) 
                     success = _uIInput.setVehicleDetails(ref vhEnt, false);
 
                 if (success)
