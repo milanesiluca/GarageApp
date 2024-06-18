@@ -10,7 +10,7 @@ namespace GarageApp.Garages
     internal static class EnumarebleExtension
     {
 
-        public static bool getbackFilteredList(Vehicle[] vehiclesInGarage, Vehicle vh)
+        public static IEnumerable<Vehicle>? getbackFilteredList(Vehicle[] vehiclesInGarage, Vehicle vh)
         {
 
             IEnumerable<Vehicle> list = vehiclesInGarage;
@@ -55,10 +55,10 @@ namespace GarageApp.Garages
 
             Console.Clear();
             foreach (var item in list)
-                Console.WriteLine(item.ToString());
+                yield return item;
 
 
-            return true;
+            
         }
 
     }

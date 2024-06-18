@@ -67,10 +67,24 @@ namespace GarageApp.Garages
             if (success)
             {
                 var result = EnumarebleExtension.getbackFilteredList(_vehiPlaces, genVh);
+
+                if (result != null && result.Count() > 0)
+                {
+                    Console.Clear();
+                    Console.BackgroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    Console.WriteLine($" * Filter result: {result.Count()} vehicles * ");
+                    Console.ResetColor();
+                    Console.WriteLine();
+                    foreach (Vehicle item in result)
+                        Console.WriteLine(item.ToString());
+                }
+                else
+                    Console.WriteLine("\nNo Result for your search\n");
                 
-            }
-            
-        
+            } else
+                Console.WriteLine("\nEn Error has occoured\n");
+
         }
 
              
