@@ -16,13 +16,16 @@ namespace GarageApp.Garages
     public class VehiclesGarage: IGarage<Vehicle>
     {
         private Vehicle[] _vehiPlaces;
+        public Vehicle[] VehiPlaces { get; private set;  }
 
         public int NumberOfPlaces { get; private set; }
 
         public VehiclesGarage(int carPlaces) {
             NumberOfPlaces = carPlaces;
             _vehiPlaces = new Vehicle[carPlaces];
+            VehiPlaces = _vehiPlaces;
         }
+
 
 
         public bool AddVehicleToParking(Vehicle v)

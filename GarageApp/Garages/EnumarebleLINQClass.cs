@@ -53,7 +53,7 @@ namespace GarageApp.Garages
                     .Where(x => x.Color == color);
             }
 
-            Console.Clear();
+            
             foreach (var item in list)
                 yield return item;
 
