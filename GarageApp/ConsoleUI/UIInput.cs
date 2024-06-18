@@ -26,6 +26,7 @@ namespace GarageApp.ConsoleUI
                         newVh.RegNum = regNum.ToLower().Trim();
                         valid = true;
                     }
+                    
                 }
                 else
                     valid = true;

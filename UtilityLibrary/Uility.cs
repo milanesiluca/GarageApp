@@ -26,6 +26,8 @@
             try
             {
                 int index = placeList.Count(vv => vv != null);
+                if (vehicle == null) 
+                    return false;
                 if (index == 0) 
                     placeList[0] = vehicle;
                 else

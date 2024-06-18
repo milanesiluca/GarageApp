@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GarageApp.Garages
 {
-    internal static class EnumarebleExtension
+    internal static class EnumarebleLINQClass
     {
 
         public static IEnumerable<Vehicle>? getbackFilteredList(Vehicle[] vehiclesInGarage, Vehicle vh)

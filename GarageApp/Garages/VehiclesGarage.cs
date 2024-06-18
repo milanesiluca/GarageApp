@@ -1,6 +1,7 @@
 ﻿using GarageApp.ConsoleUI;
 using GarageApp.Vehicles;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UtilityLibrary;
 
-
+[assembly: InternalsVisibleTo("GarageTest")]
 namespace GarageApp.Garages
 {
     public class VehiclesGarage: IGarage<Vehicle>
@@ -27,11 +28,6 @@ namespace GarageApp.Garages
         public bool AddVehicleToParking(Vehicle v)
         {
             return Utility<Vehicle>.InsertVehicle(v, ref _vehiPlaces);
-        }
-
-        private bool RemoveVehiclefromParking(Vehicle v)
-        {
-            return Utility<Vehicle>.RemoveVehicle(v, ref _vehiPlaces);
         }
 
         public void ShowCarListInGarage() {
@@ -61,12 +57,12 @@ namespace GarageApp.Garages
         public void FilterVehicleByFeature() { 
 
             Vehicle genVh = new Vehicle();
-            UIInput input = new UIInput();
+            IUIInput input = new UIInput();
             bool success = input.setVehicleDetails(ref genVh, true);
             
             if (success)
             {
-                var result = EnumarebleExtension.getbackFilteredList(_vehiPlaces, genVh);
+                var result = EnumarebleLINQClass.getbackFilteredList(_vehiPlaces, genVh);
 
                 if (result != null && result.Count() > 0)
                 {
@@ -98,5 +94,14 @@ namespace GarageApp.Garages
             Console.WriteLine(Utility<Vehicle>.RemoveVehicle(vehicleToRemove, ref _vehiPlaces) ? "Vehicle exit registered": "En Error has occoured");
             
         }
+
+        public IEnumerator<Vehicle> GetEnumerator()
+        {
+            foreach (Vehicle vh in _vehiPlaces)
+                yield return vh;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+       
     }
 }

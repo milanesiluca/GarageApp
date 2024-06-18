@@ -7,7 +7,7 @@ using GarageApp.Vehicles;
 
 namespace GarageApp.Garages
 {
-    internal interface IGarage<T>
+    internal interface IGarage<T> : IEnumerable<T>
     {
         int NumberOfPlaces { get; }
 

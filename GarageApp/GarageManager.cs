@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using GarageApp.ConsoleUI;
@@ -8,6 +10,7 @@ using GarageApp.Garages;
 using GarageApp.Vehicles;
 using UtilityLibrary;
 
+[assembly: InternalsVisibleTo("GarageTest")]
 namespace GarageApp
 {
     internal class GarageManager
@@ -136,7 +139,7 @@ namespace GarageApp
             
         }
 
-
+        
         private void VehicleEntranceRegistration() {
 
             int operation = -1;
