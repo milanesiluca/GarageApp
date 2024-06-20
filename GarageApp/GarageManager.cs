@@ -182,7 +182,7 @@ namespace GarageApp
                     if (alreadyInGarage != null)
                     {
                         Console.ForegroundColor = ConsoleColor.DarkCyan;
-                        Console.WriteLine("Vehicle alredy in garage");
+                        Console.WriteLine("Vehicle with this reg. number is alredy in garage");
                         Console.ResetColor();
                         return;
 ;                   }
