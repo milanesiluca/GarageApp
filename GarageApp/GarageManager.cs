@@ -187,7 +187,7 @@ namespace GarageApp
                         return;
 ;                   }
                     Console.ForegroundColor = ConsoleColor.DarkCyan;
-                    Console.WriteLine(ZioPinoGarage.AddVehicleToParking(vhEnt!) ? " * Veichle added correctly * \n" : " * En error has occoured * \n");
+                    Console.WriteLine(ZioPinoGarage.AddVehicleToParking(vhEnt!) ? " * Veichle added correctly * \n" : " * The garage is full * \n");
                     Console.ResetColor();
                     Console.WriteLine();
                 }
