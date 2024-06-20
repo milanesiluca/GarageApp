@@ -13,7 +13,9 @@ namespace GarageApp.ConsoleUI
     {
         public bool setVehicleDetails(ref Vehicle newVh, bool filter = false)
         {
-
+            if (filter == true) {
+                Console.WriteLine("Insert the parameter for the filter (press 'enter to jump over the useless paramether)");
+            }
             bool valid = filter;
             do
             {
@@ -45,7 +47,7 @@ namespace GarageApp.ConsoleUI
                     newVh.Fuel = fuel.ToLower().Trim();
                     valid = true;
                 }
-                else
+                else if (filter != true)
                     Console.WriteLine("Please set a valid fuel");
 
             } while (!valid && filter == false);
@@ -58,7 +60,7 @@ namespace GarageApp.ConsoleUI
                 valid = int.TryParse(insertedSeat, out int wheelsN);
                 if (valid)
                     newVh.WheelsNumer = wheelsN;
-                else
+                else if (filter != true)
                     Console.WriteLine("Please set a valid number");
 
             } while (!valid && filter == false);
@@ -71,7 +73,7 @@ namespace GarageApp.ConsoleUI
                 valid = int.TryParse(insertedSeat, out int seatN);
                 if (valid)
                     newVh.NumberOfSeat = seatN;
-                else
+                else if (filter != true)
                     Console.WriteLine("Please set a valid number");
 
             } while (!valid && filter == false);
@@ -84,7 +86,7 @@ namespace GarageApp.ConsoleUI
                 valid = int.TryParse(insertedLenght, out int lenght);
                 if (valid)
                     newVh.Lenght = lenght;
-                else
+                else if (filter != true)
                     Console.WriteLine("Please set a valid lenght");
             } while (!valid && filter == false);
 
@@ -98,7 +100,7 @@ namespace GarageApp.ConsoleUI
                     newVh.Color = color;
                     valid = true;
                 }
-                else
+                else if (filter != true)
                     Console.WriteLine("Please set a valid color");
             } while (!valid);
 
@@ -114,7 +116,7 @@ namespace GarageApp.ConsoleUI
                         valid = int.TryParse(doors, out int doorsNum);
                         if (valid)
                             cVh.Doors = doorsNum;
-                        else
+                        else if (filter != true)
                             Console.WriteLine("Please set a valid number");
 
                     } while (!valid && filter == false);
@@ -129,7 +131,7 @@ namespace GarageApp.ConsoleUI
                         valid = int.TryParse(insertedHeight, out int height);
                         if (valid)
                             bVh.Height = height;
-                        else
+                        else if (filter != true)
                             Console.WriteLine("Please set a valid height");
                     } while (!valid && filter == false);
                 }
