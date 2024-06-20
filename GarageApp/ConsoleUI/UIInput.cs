@@ -25,7 +25,6 @@ namespace GarageApp.ConsoleUI
                     {
                         newVh.RegNum = regNum.ToLower().Trim();
                         valid = true;
-                        
                     }
                     else
                         Console.WriteLine("Please set a valid reg number");

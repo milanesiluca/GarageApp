@@ -177,6 +177,15 @@ namespace GarageApp
                 if (success)
                 {
                     Console.BackgroundColor = ConsoleColor.White;
+                    
+                    Vehicle? alreadyInGarage = ZioPinoGarage.FilterVehicleListByRegNumber(vhEnt?.RegNum!);
+                    if (alreadyInGarage != null)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkCyan;
+                        Console.WriteLine("Vehicle alredy in garage");
+                        Console.ResetColor();
+                        return;
+;                   }
                     Console.ForegroundColor = ConsoleColor.DarkCyan;
                     Console.WriteLine(ZioPinoGarage.AddVehicleToParking(vhEnt!) ? " * Veichle added correctly * \n" : " * En error has occoured * \n");
                     Console.ResetColor();

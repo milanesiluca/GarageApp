@@ -38,7 +38,7 @@ namespace GarageApp.Garages
             Utility<Vehicle>.ShowVehiclesListInGarage(ref _vehiPlaces);
         }
 
-        private Vehicle? FilterVehicleListByRegNumber(string regNum) {
+        public Vehicle? FilterVehicleListByRegNumber(string regNum) {
             
             var filteredList = _vehiPlaces
                                .Where(vh => vh != null)
